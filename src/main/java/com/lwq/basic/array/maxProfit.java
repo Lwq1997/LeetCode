@@ -8,7 +8,6 @@ package com.lwq.basic.array;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *假设有一个数组，它的第i个元素是一支给定的股票在第i天的价格。
