@@ -1,4 +1,4 @@
-package com.lwq;
+package com.lwq.basic.array;
 
 import java.util.HashMap;
 
@@ -27,7 +27,7 @@ public class Two_Sum {
         for(int i = 0 ; i < len ; i++){
             map.put(nums[i],i);
         }
-        for(int i = 0 ; i < nums.length ; i++){
+        for(int i = 0 ; i < len ; i++){
             int k = target-nums[i];
             if(map.containsKey(k)&&map.get(k)!=i){
                 result[0]=i;
