@@ -1,4 +1,4 @@
-package com.lwq.basic.string;
+package com.lwq.primary_algorithm.string;
 
 /**
  * @Author: Lwq
@@ -8,8 +8,6 @@ package com.lwq.basic.string;
  */
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * s = "leetcode"

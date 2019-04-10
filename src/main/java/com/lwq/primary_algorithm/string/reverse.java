@@ -1,4 +1,4 @@
-package com.lwq.basic.string;
+package com.lwq.primary_algorithm.string;
 
 /**
  * @Author: Lwq
