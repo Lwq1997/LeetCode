@@ -13,24 +13,6 @@ public class containsduplicate {
         System.out.println(containsDuplicate1(arr));
     }
 
-    /**
-     * 暴力破解
-     * @param nums
-     * @return
-     */
-    public static boolean containsDuplicate(int[] nums) {
-        if(nums==null||nums.length==0){
-            return false;
-        }
-        for(int i = 0; i < nums.length ;i++){
-            for(int j = i+1; j<nums.length ; j++){
-                if(nums[i]==nums[j]){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     public static boolean containsDuplicate1(int[] nums) {
         if(nums==null||nums.length==0){
