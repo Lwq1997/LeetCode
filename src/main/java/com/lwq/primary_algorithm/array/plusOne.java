@@ -16,21 +16,21 @@ package com.lwq.primary_algorithm.array;
  */
 public class plusOne {
     public static void main(String[] args) {
-        int[] digits = {1,6,4,9};
+        int[] digits = {9,9,9,9};
         plusOne(digits);
     }
     public static int[] plusOne(int[] digits) {
         int length = digits.length;
-        for(int i = length-1; i > -1; i--){
+        for(int i = length-1 ; i >= 0;i--){
             if(digits[i]<9){
                 digits[i]++;
                 return digits;
             }
-            digits[i]=0;
+            digits[i] = 0;
         }
-        //全是9
+        //万一全是9
         int[] result = new int[length+1];
-        result[0]=1;
+        result[0] = 1;
         return result;
     }
 }

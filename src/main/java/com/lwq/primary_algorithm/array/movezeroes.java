@@ -15,19 +15,21 @@ package com.lwq.primary_algorithm.array;
  *  必须在原数组上操作，不能拷贝额外的数组。
  */
 public class movezeroes {
-    public void moveZeroes(int[] nums) {
-        int slow = 0;
-        int fast = 0;
-        while (fast<nums.length){
-            if(nums[fast]!=0){
-                nums[slow] = nums[fast];
-                slow++;
-                fast++;
-            }else {
-                fast++;
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,0,1,4,2,0};
+        moveZeroes(arr);
+        System.out.println(arr);
+    }
+    public static void moveZeroes(int[] nums) {
+        int length = nums.length;
+        int j = 0;   //不是0的个数
+        for(int i = 0; i < length ; i++){
+            if(nums[i]!=0){
+                nums[j] = nums[i];
+                j++;
             }
         }
-        for(int i = slow;i<nums.length;i++){
+        for(int i = j; i < length ;i++){
             nums[i] = 0;
         }
     }
