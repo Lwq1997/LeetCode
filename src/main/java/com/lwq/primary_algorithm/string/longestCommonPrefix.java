@@ -1,7 +1,5 @@
 package com.lwq.primary_algorithm.string;
 
-import org.omg.CORBA.INTERNAL;
-
 public class longestCommonPrefix {
     public static void main(String[] args) {
 
