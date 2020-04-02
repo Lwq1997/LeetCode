@@ -62,6 +62,34 @@ public class ConsistentHashingWithVirtualNode {
         return getRealNodeName(virtualNodeName);
     }
 
+    private static void refreshHashCircle() {
+        // 当集群变动时，刷新hash环，其余的集群在hash环上的位置不会发生变动
+        virtualNodes.clear();
+        for (String realGroup: realGroups) {
+            for (int i = 0; i < VIRTUAL_NODE_NUM; i++) {
+                String virtualNodeName = getVirtualNodeName(realGroup, i);
+                int hash = HashUtil.getHash(virtualNodeName);
+                System.out.println("[" + virtualNodeName + "] launched @ " + hash);
+                virtualNodes.put(hash, virtualNodeName);
+            }
+        }
+    }
+    private static void addGroup(String identifier) {
+        realGroups.add(identifier);
+        refreshHashCircle();
+    }
+
+    private static void removeGroup(String identifier) {
+        int i = 0;
+        for (String group:realGroups) {
+            if (group.equals(identifier)) {
+                realGroups.remove(i);
+            }
+            i++;
+        }
+        refreshHashCircle();
+    }
+
     public static void main(String[] args) {
         // 生成随机数进行测试
         //resMap<节点，请求被打到该节点的个数>
@@ -83,6 +111,7 @@ public class ConsistentHashingWithVirtualNode {
                     System.out.println("group " + k + ": " + v + "(" + v/100000.0D +"%)");
                 }
         );
+        
     }
 
 }
