@@ -9,9 +9,9 @@ import java.util.Date;
  */
 public class OOMtest {
     public static void main(String[] args) {
-        new Thread(()->{
+        new Thread(() -> {
             ArrayList<byte[]> list = new ArrayList<>();
-            while (true){
+            while (true) {
                 System.out.println(new Date().toString() + Thread.currentThread() + "==");
                 byte[] b = new byte[1024 * 1024 * 1];
                 list.add(b);
@@ -23,8 +23,8 @@ public class OOMtest {
             }
         }).start();
 
-        new Thread(()->{
-            while (true){
+        new Thread(() -> {
+            while (true) {
                 System.out.println(new Date().toString() + Thread.currentThread() + "==");
                 try {
                     Thread.sleep(1000);

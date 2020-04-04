@@ -46,12 +46,12 @@ public class LeetCode507 {
         int i = 2;
         double sqrt = Math.sqrt(num);
         for (; i < sqrt; i++) {
-            if(num%i==0){
-                sum+=i;
-                sum+=num/i;
+            if (num % i == 0) {
+                sum += i;
+                sum += num / i;
             }
         }
-        if(i*i==num){
+        if (i * i == num) {
             sum += i;
         }
         return sum == num;
@@ -59,25 +59,27 @@ public class LeetCode507 {
 
     /**
      * 欧几里得-欧拉定理告诉我们，每个偶完全数都可以写成 2^{p-1}(2^p-1)的形式，其中 p 为素数。例如前四个完全数可以写成如下形式：
-     *
+     * <p>
      * 6 = 2^1 * (2^2 - 1)
      * 28 = 2^2 * (2^3 - 1)
      * 496 = 2^4 * (2^5 - 1)
      * 8128 = 2^6 * (2^7 - 1)
-     *
+     * <p>
      * 目前奇完全数还未被发现
+     *
      * @param num
      * @return
      */
 
     public static boolean checkPerfectNumber1(int num) {
-        int[] primes=new int[]{2,3,5,7,13,17,19,31};
-        for (int prime: primes) {
+        int[] primes = new int[]{2, 3, 5, 7, 13, 17, 19, 31};
+        for (int prime : primes) {
             if (pn(prime) == num)
                 return true;
         }
         return false;
     }
+
     public static int pn(int p) {
         return (1 << (p - 1)) * ((1 << p) - 1);
     }

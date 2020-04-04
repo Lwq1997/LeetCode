@@ -5,18 +5,18 @@ import java.util.*;
 /**
  * n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
  * 在其中任意一行放置一个皇后，则与此皇后同行，同列，同对角线的都不允许再放其他皇后
- *
+ * <p>
  * 输入: 4
  * 输出: [
- *  [".Q..",  // 解法 1
- *   "...Q",
- *   "Q...",
- *   "..Q."],
- *
- *  ["..Q.",  // 解法 2
- *   "Q...",
- *   "...Q",
- *   ".Q.."]
+ * [".Q..",  // 解法 1
+ * "...Q",
+ * "Q...",
+ * "..Q."],
+ * <p>
+ * ["..Q.",  // 解法 2
+ * "Q...",
+ * "...Q",
+ * ".Q.."]
  * ]
  * 解释: 4 皇后问题存在两个不同的解法。
  */
@@ -32,7 +32,7 @@ public class LeetCode51_2 {
         System.out.println(lists.size());
         for (List<String> list : lists) {
             for (String s : list) {
-                System.out.println(s+" ");
+                System.out.println(s + " ");
             }
             System.out.println();
         }
