@@ -46,19 +46,20 @@ public class LeetCode03 {
      * 这本质还是哈希的思想，思路 1 是使用库函数申请额外空间，思路 2 则是数组本身做哈希表，达到了节省空间的目的
      * 此处会用到 while 循环，原因是保证交换过来的新元素位置也要正确
      * 时间复杂度：O(n)，空间复杂度：O(1)
-     * @param nums
+     * @param arr
      * @return
      */
-    public static int findRepeatNumber1(int[] nums) {
-        int len = nums.length;
-        for (int i = 0; i < len; i++) {
-            while (nums[i] != i){
-                if (nums[i] == nums[nums[i]]) {
-                    return nums[i];
-                }
-                int temp = nums[i];
-                nums[i] = nums[temp];
-                nums[temp] = temp;
+    public static int findRepeatNumber1(int[] arr) {
+        for (int i = 0; i < arr.length; i++){
+            //将数字与下标对应起来
+            while (arr[i] != i){
+                int temp = arr[i];
+                //如果准备移动的数字已经等于对应位置上的数字则说明数字重复
+                //移动就是把这个位置不对的数据挪到他应该在的位置上
+                if(temp == arr[temp]) return temp;
+                //把原本在temp位置上的数据放到当前位置
+                arr[i] = arr[temp];
+                arr[temp] = temp;
             }
         }
         return -1;
