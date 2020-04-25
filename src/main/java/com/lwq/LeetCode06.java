@@ -31,7 +31,7 @@ import java.util.Arrays;
  * E C   I H   N
  * T     S     G
  */
-public class LeetCode6 {
+public class LeetCode06 {
     public static void main(String[] args) {
         System.out.println(convert("LEETCODEISHIRING", 3));
     }
