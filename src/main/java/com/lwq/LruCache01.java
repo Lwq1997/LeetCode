@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LruCache<K, V> {
+public class LruCache01<K, V> {
 
     /**
      * 最大缓存大小
@@ -14,7 +14,7 @@ public class LruCache<K, V> {
 
     private LinkedHashMap<K, V> cacheMap;
 
-    public LruCache(int cacheSize) {
+    public LruCache01(int cacheSize) {
         this.cacheSize = cacheSize;
 
         cacheMap = new LinkedHashMap(16, 0.75F, true) {
@@ -41,7 +41,7 @@ public class LruCache<K, V> {
     }
 
     public static void main(String[] args) {
-        LruCache<String, Integer> map = new LruCache<>(3);
+        LruCache01<String, Integer> map = new LruCache01<>(3);
         map.put("key1", 1);
         map.put("key2", 2);
         map.put("key3", 3);
