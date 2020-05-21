@@ -1,6 +1,5 @@
 package com.lwq;
 
-import org.junit.Test;
 
 /**
  * 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
@@ -12,20 +11,26 @@ import org.junit.Test;
  *
  */
 public class LeetCode21 {
-    @Test
-    public void exchange(int[] nums) {
-        int slow = 0,fast = 0;
-        while (fast<nums.length){
-            if((nums[fast] & 1) == 0){
-                slow++;
-            }
-            fast++;
+    public ListNode mergeTwoLists(ListNode p1, ListNode p2) {
+        if(p1 == null && p2 == null){
+            return null;
         }
-    }
+        if(p1 == null){
+            return p2;
+        }
+        if(p2 == null){
+            return p1;
+        }
 
-    private void swap(int[] nums,int a, int b) {
-        int temp = nums[a];
-        nums[a] = nums[b];
-        nums[b] =temp;
+        ListNode head = null;
+        if (p1.val <= p2.val){
+            head = p1;
+            head.next = mergeTwoLists(p1.next,p2);
+        }
+        if (p1.val > p2.val){
+            head = p2;
+            head.next = mergeTwoLists(p1,p2.next);
+        }
+        return head;
     }
 }
