@@ -67,6 +67,15 @@ public class LeetCode005 {
         return res;
     }
 
+    /**
+     * 该方法是传入一个标识位，返回从这个标志位往两边扩展的回文子串
+     * 如果标识位重合，说明扩展的回文是奇数
+     * 如果标识为不重合，说明扩展的回文是偶数，可以理解成两个标志位中间的间隙是最中点
+     * @param s
+     * @param left
+     * @param right
+     * @return
+     */
     private static String centerSpread(String s, int left, int right) {
         while (left>=0 && right < s.length()){
             if(s.charAt(left) == s.charAt(right)){
