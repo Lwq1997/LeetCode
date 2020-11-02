@@ -44,7 +44,16 @@ import java.util.*;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LeetCode140 {
-    public List<String> wordBreak(String s, List<String> wordDict) {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("apple");
+        list.add("pen");
+        list.add("applepen");
+        list.add("pine");
+        list.add("pineapple");
+        wordBreak("pineapplepenapple",list);
+    }
+    public static List<String> wordBreak(String s, List<String> wordDict) {
         Set<String> set = new HashSet<>(wordDict);
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;
@@ -67,7 +76,7 @@ public class LeetCode140 {
         return res;
     }
 
-    private void dfs(String s, int length, Set<String> set, List<String> res, LinkedList<String> queue, boolean[] dp) {
+    private static void dfs(String s, int length, Set<String> set, List<String> res, LinkedList<String> queue, boolean[] dp) {
         if(length == 0){
             StringBuilder sb = new StringBuilder();
             for (String word : queue) {
