@@ -48,14 +48,20 @@ public class LeetCode406 {
                 return a[1] - b[1];
             }
         });
-
-        System.out.println(persons);
+        for(int i = 0; i < persons.length; i++){
+            System.out.println(Arrays.toString(persons[i]));
+        }
 
         List<int[]> res = new LinkedList<>();
         for (int[] person : persons) {
             // 基于人数将元素插入到指定位置即可
             res.add(person[1],person);
         }
+        System.out.println("********************");
+        for(int i = 0; i < persons.length; i++){
+            System.out.println(Arrays.toString(res.get(i)));
+        }
+
 
         return res.toArray(new int[persons.length][2]);
     }
