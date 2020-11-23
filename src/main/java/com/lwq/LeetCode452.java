@@ -30,7 +30,7 @@ public class LeetCode452 {
         Arrays.sort(intvs, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
+                return Integer.compare(o1[1],o2[1]);
             }
         });
         // 至少有一个区间不相交
@@ -40,6 +40,7 @@ public class LeetCode452 {
 
         for (int[] intv : intvs) {
             //  这里使用大于，因为两个紧挨的气球，需要分开算
+            //如果箭射入的位置小于新的气球的左边位置，说明这支箭不能击爆新的气球，需要再拿出一支箭，并且要更新这支箭射入的位置
             if(intv[0] > x_end){
                 count++;
                 x_end = intv[1];
