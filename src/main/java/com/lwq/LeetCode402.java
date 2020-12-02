@@ -34,13 +34,16 @@ import java.util.Stack;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LeetCode402 {
+    public static void main(String[] args) {
+        removeKdigits("1432219", 3);
+    }
     /**
      * 从左到右，找第一个比后面大的字符，删除，清零，k次扫描。
      * @param num
      * @param k
      * @return
      */
-    public String removeKdigits(String num, int k) {
+    public static String removeKdigits(String num, int k) {
         Deque<Character> stack = new ArrayDeque<>(num.length());
         for(char c : num.toCharArray()){
             while(k > 0 && !stack.isEmpty() && c < stack.peek()){
