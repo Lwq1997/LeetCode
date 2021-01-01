@@ -51,6 +51,7 @@ public class LeetCode435 {
 
         for (int[] intv : intvs) {
             if(intv[0] >= x_end){
+                // 说明不相交
                 count++;
                 x_end = intv[1];
             }
