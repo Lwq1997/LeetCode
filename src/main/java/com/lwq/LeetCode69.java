@@ -20,7 +20,11 @@ package com.lwq;
  */
 public class LeetCode69 {
 
-    public int mySqrt(int x) {
+    public static void main(String[] args) {
+        System.out.println(mySqrt(4));
+    }
+
+    public static int mySqrt(int x) {
 
         // 注意：针对特殊测试用例，例如 2147395599
         // 要把搜索的范围设置成长整型
