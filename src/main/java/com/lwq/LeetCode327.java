@@ -1,6 +1,5 @@
 package com.lwq;
 
-import com.sun.tools.javah.LLNI;
 
 import java.util.Arrays;
 
