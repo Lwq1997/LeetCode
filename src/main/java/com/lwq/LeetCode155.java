@@ -3,20 +3,32 @@ package com.lwq;
 import java.util.Stack;
 
 /**
- *设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
- *
+ * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+ * <p>
  * push(x) —— 将元素 x 推入栈中。
  * pop() —— 删除栈顶的元素。
  * top() —— 获取栈顶元素。
  * getMin() —— 检索栈中的最小元素。
  */
 public class LeetCode155 {
-    class MinStack {
-        Stack<Integer> data  = null;
-        Stack<Integer> help  = null;
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        System.out.println(minStack.top());
+        System.out.println(minStack.getMin());
+    }
+    static class MinStack {
+        Stack<Integer> data = null;
+        Stack<Integer> help = null;
 
 
-        /** initialize your data structure here. */
+        /**
+         * initialize your data structure here.
+         */
         public MinStack() {
             data = new Stack<>();
             help = new Stack<>();
@@ -39,15 +51,16 @@ public class LeetCode155 {
                 data.pop();
             }
         }
+
         public int top() {
-            if(!data.isEmpty()){
+            if (!data.isEmpty()) {
                 return data.peek();
             }
             throw new RuntimeException("栈中元素为空，此操作非法");
         }
 
         public int getMin() {
-            if(!help.isEmpty()){
+            if (!help.isEmpty()) {
                 return help.peek();
             }
             throw new RuntimeException("栈中元素为空，此操作非法");
