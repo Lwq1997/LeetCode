@@ -34,22 +34,16 @@ public class LeetCode206 {
     }
 
     public static ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
+        ListNode prev = null; //前指针节点
+        ListNode curr = head; //当前指针节点
+        //每次循环，都将当前节点指向它前面的节点，然后当前节点和前节点后移
+        while (curr != null) {
+            ListNode nextTemp = curr.next; //临时节点，暂存当前节点的下一节点，用于后移
+            curr.next = prev; //将当前节点指向它前面的节点
+            prev = curr; //前指针后移
+            curr = nextTemp; //当前指针后移
         }
-        ListNode pre = head;
-        ListNode cur = head.next;
-        pre.next = null;
-
-        //每一次循环需要反转cur这个节点
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            // 集体向下挪动
-            pre = cur;
-            cur = temp;
-        }
-        return pre;
+        return prev;
     }
 
     public static ListNode reverseList1(ListNode head) {
