@@ -17,6 +17,15 @@ import java.util.HashMap;
  * 所以返回 [0, 1]
  */
 public class LeetCode01 {
+    public static void main(String[] args) {
+        LeetCode01 leetCode01 = new LeetCode01();
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = leetCode01.twoSum(nums, target);
+        System.out.println(result[0]);
+        System.out.println(result[1]);
+    }
+
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
         int[] res = new int[2];
