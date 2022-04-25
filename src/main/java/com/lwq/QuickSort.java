@@ -46,6 +46,7 @@ public class QuickSort {
         }
         //more之后的元素（包括more）都比right大，交换后，那个参考值现在就是more的位置
         swap(arr, more, right);
+        //less之前（不包括less）都比right的数小，more之后（都比more大）都比right大
         return new int[]{less+1,more};
     }
 
