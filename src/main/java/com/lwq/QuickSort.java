@@ -28,7 +28,9 @@ public class QuickSort {
     }
 
     public static int[] partition(int[] arr, int left, int right) {
+        //左闭右开
         int less = left-1;
+        //这是基准值，这个方法结束后，小于more的都在more的左边
         int more = right;
         int index = left;
         while(index<more){
