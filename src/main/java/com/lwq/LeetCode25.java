@@ -24,18 +24,11 @@ public class LeetCode25 {
         LeetCode25 leetCode25 = new LeetCode25();
         ListNode temp1 = listNode;
         ListNode temp2 = listNode;
-//        ListNode listNode1 = leetCode25.reverseKGroup01(temp1, 2);
-        ListNode listNode2 = leetCode25.reverseKGroup02(temp2, 2);
-        //打印listNode1
-//        while (listNode1 != null) {
-//            System.out.println(listNode1.val);
-//            listNode1 = listNode1.next;
-//        }
-        System.out.println("##########");
+        ListNode listNode1 = leetCode25.reverseKGroup01(temp1, 2);
 //        打印listNode1
-        while (listNode2 != null) {
-            System.out.println(listNode2.val);
-            listNode2 = listNode2.next;
+        while (listNode1 != null) {
+            System.out.println(listNode1.val);
+            listNode1 = listNode1.next;
         }
     }
 
@@ -89,27 +82,5 @@ public class LeetCode25 {
             cur = nextTemp; //当前指针后移
         }
         return pre;
-    }
-
-    public ListNode reverseKGroup02(ListNode head, int k) {
-        ListNode dummy = new ListNode(0), prev = dummy, curr = head, next;
-        dummy.next = head;
-        int length = 0;
-        while(head != null) {
-            length++;
-            head = head.next;
-        }
-        head = dummy.next;
-        for(int i = 0; i < length / k; i++) {
-            for(int j = 0; j < k - 1; j++) {
-                next = curr.next;
-                curr.next = next.next;
-                next.next = prev.next;
-                prev.next = next;
-            }
-            prev = curr;
-            curr = prev.next;
-        }
-        return dummy.next;
     }
 }
