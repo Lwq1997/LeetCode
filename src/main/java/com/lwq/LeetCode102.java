@@ -25,6 +25,18 @@ import java.util.List;
  * ]
  */
 public class LeetCode102 {
+    public static void main(String[] args) {
+        //测试
+        TreeNode treeNode = new TreeNode(3);
+        treeNode.left = new TreeNode(9);
+        treeNode.right = new TreeNode(20);
+        treeNode.right.left = new TreeNode(15);
+        treeNode.right.right = new TreeNode(7);
+        LeetCode102 leetCode102 = new LeetCode102();
+        List<List<Integer>> lists = leetCode102.levelOrder(treeNode);
+        System.out.println(lists);
+    }
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         //按层遍历即可
         //1.
