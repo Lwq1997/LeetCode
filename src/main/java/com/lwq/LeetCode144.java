@@ -54,6 +54,24 @@ public class LeetCode144 {
         dfs(res,root.right);
     }
 
+    /**
+     *
+     我们使用栈来进行迭代，过程如下：
+
+     初始化栈，并将根节点入栈；
+     当栈不为空时：
+     弹出栈顶元素 node，并将值添加到结果中；
+     如果 node 的右子树非空，将右子树入栈；
+     如果 node 的左子树非空，将左子树入栈；
+     由于栈是“先进后出”的顺序，所以入栈时先将右子树入栈，这样使得前序遍历结果为 “根->左->右”的顺序。
+
+     作者：z1m
+     链接：https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/tu-jie-er-cha-shu-de-si-chong-bian-li-by-z1m/
+     来源：力扣（LeetCode）
+     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param head
+     * @return
+     */
     public List<Integer> preOrderIteration_02(TreeNode head) {
         ArrayList<Integer> res = new ArrayList<>();
         if (head == null) {
