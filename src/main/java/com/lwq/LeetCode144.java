@@ -92,4 +92,25 @@ public class LeetCode144 {
         }
         return res;
     }
+
+    public List<Integer> preOrderIteration_03(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        TreeNode cur = root;
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {
+                res.add(cur.val);
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode node = stack.pop();
+            if (node.right != null) {
+                cur = node.right;
+            }
+        }
+        return res;
+    }
 }
