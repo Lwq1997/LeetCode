@@ -18,6 +18,24 @@ import java.util.PriorityQueue;
  * 输出: 1->1->2->3->4->4->5->6
  */
 public class LeetCode23 {
+    public static void main(String[] args) {
+        LeetCode23 leetCode23 = new LeetCode23();
+        ListNode[] lists = new ListNode[3];
+        lists[0] = new ListNode(1);
+        lists[0].next = new ListNode(4);
+        lists[0].next.next = new ListNode(5);
+        lists[1] = new ListNode(1);
+        lists[1].next = new ListNode(3);
+        lists[1].next.next = new ListNode(4);
+        lists[2] = new ListNode(2);
+        lists[2].next = new ListNode(6);
+        ListNode listNode = leetCode23.mergeKLists(lists);
+        while (listNode != null){
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        }
+    }
+
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
@@ -66,7 +84,13 @@ public class LeetCode23 {
             }
         });
         for (ListNode list : lists) {
-            queue.add(list);
+            if (list == null) {
+                //   [[]]
+                //   [[],[1]]
+                continue;
+            }else {
+                queue.add(list);
+            }
         }
         ListNode p = new ListNode(-1);
         ListNode res = p;
