@@ -17,6 +17,11 @@ import java.util.HashMap;
  */
 public class LeetCode76 {
 
+    public static void main(String[] args) {
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+        System.out.println(minWindow(s, t));
+    }
     public static String minWindow(String s, String t) {
         System.out.println(s.length()+" "+t.length());
         HashMap<Character, Integer> window = new HashMap<>(), need = new HashMap<>();
