@@ -19,6 +19,12 @@ package com.lwq;
  * 所有输入只包含小写字母 a-z 。
  */
 public class LeetCode14 {
+    public static void main(String[] args) {
+        LeetCode14 leetCode14 = new LeetCode14();
+        String[] strs = {"flower","flow","flight"};
+        System.out.println(leetCode14.longestCommonPrefix(strs));
+    }
+
     public String longestCommonPrefix(String[] strs) {
         int count = strs.length;
         String pre = "";
