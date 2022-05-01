@@ -26,7 +26,7 @@ import java.util.PriorityQueue;
  */
 public class LeetCode239 {
     public static void main(String[] args) {
-        int[] ints = maxSlidingWindow2(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
+        int[] ints = maxSlidingWindow1(new int[]{1, -3, -1, -3, 5, 3, 6, 7}, 1);
         for (int anInt : ints) {
             System.out.println(anInt);
         }
@@ -52,32 +52,32 @@ public class LeetCode239 {
 
     //虽然 offer 函数的时间复杂度是 log 级的，但是 remove 是 O(k) ，所以最终的时间复杂度依旧是 O(nk)。
     public static int[] maxSlidingWindow1(int[] nums, int k) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
+        int n = nums.length;
+        // 1. 优先队列存放的是二元组(num,index) : 大顶堆（元素大小不同按元素大小排列，元素大小相同按下标进行排列）
+        // num :   是为了比较元素大小
+        // index : 是为了判断窗口的大小是否超出范围
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>(){
+            public int compare(int[] pair1,int[] pair2){
+                return pair1[0] != pair2[0] ? pair2[0] - pair1[0]:pair2[1] - pair1[1];
             }
         });
 
-        int len = nums.length;
-        int[] result = new int[len - k + 1];
-        int index = 0;
-        if (len == 0) {
-            return nums;
+        // 2. 优选队列初始化 : k个元素的堆
+        for(int i = 0;i < k;i++){
+            pq.offer(new int[]{nums[i],i});
         }
 
-        for (int i = 0; i < len; i++) {
-            if (queue.size() > k) {
-                //当堆中的数大于k个的时候，移除多余的（i-k）这个数
-                queue.remove(nums[i - k]);
+        // 3. 处理堆逻辑
+        int[] res = new int[n - k + 1];         // 初始化结果数组长度 ：一共有 n - k + 1个窗口
+        res[0] = pq.peek()[0];                  // 初始化res[0] ： 拿出目前堆顶的元素
+        for(int i = k;i < n;i++){               // 向右移动滑动窗口
+            pq.offer(new int[]{nums[i],i});     // 加入大顶堆中
+            while(pq.peek()[1] <= i - k){       // 将下标不在滑动窗口中的元素都干掉
+                pq.poll();                      // 维护：堆的大小就是滑动窗口的大小
             }
-            queue.offer(nums[i]);
-            //更新 result，只有从i>=k-1之后才会有输出
-            if (i >= k - 1) {
-                result[index++] = queue.peek();
-            }
+            res[i - k + 1] = pq.peek()[0];      // 此时堆顶元素就是滑动窗口的最大值
         }
-        return result;
+        return res;
     }
 
     /**
