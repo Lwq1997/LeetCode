@@ -1,5 +1,7 @@
 package com.lwq;
 
+import java.util.List;
+
 /**
  * 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
  *
@@ -13,6 +15,19 @@ package com.lwq;
  * 输出: 2->3
  */
 public class LeetCode82 {
+    public static void main(String[] args) {
+        LeetCode82 leetCode82 = new LeetCode82();
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(1);
+        listNode.next.next = new ListNode(1);
+        listNode.next.next.next = new ListNode(2);
+        listNode.next.next.next.next = new ListNode(3);
+        ListNode listNode1 = leetCode82.deleteDuplicates(listNode);
+        while (listNode1 != null){
+            System.out.println(listNode1.val);
+            listNode1 = listNode1.next;
+        }
+    }
     public ListNode deleteDuplicates(ListNode head) {
         ListNode shaobing = new ListNode(-1);
         shaobing.next = head;
