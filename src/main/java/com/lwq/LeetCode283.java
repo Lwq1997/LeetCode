@@ -14,6 +14,15 @@ package com.lwq;
  *
  */
 public class LeetCode283 {
+    public static void main(String[] args) {
+        LeetCode283 leetCode283 = new LeetCode283();
+        int[] nums = {0,1,0,3,12};
+        leetCode283.moveZeroes01(nums);
+        for(int i = 0; i < nums.length; i++){
+            System.out.print(nums[i] + " ");
+        }
+    }
+
     public void moveZeroes(int[] nums) {
         int i,j = 0;
         for(i = 0; i < nums.length; i++){
@@ -26,5 +35,24 @@ public class LeetCode283 {
         while (j < nums.length){
             nums[j++] = 0;
         }
+    }
+
+    public void moveZeroes01(int[] nums) {
+        if(nums == null){
+            return;
+        }
+        int j = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                //当前元素!=0，就把其交换到左边，等于0的交换到右边
+                swap(nums,i,j++);
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 }
