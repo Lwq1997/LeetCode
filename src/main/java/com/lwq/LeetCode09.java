@@ -24,33 +24,35 @@ import java.util.Stack;
  *
  * 1 <= values <= 10000
  * 最多会对 appendTail、deleteHead 进行 10000 次调用
+ *
+ * 等价于232题
  */
 public class LeetCode09 {
-    class CQueue {
 
-        Stack<Integer> A, B;
+    class CQueue {
+        Stack<Integer> stack1 = null;
+        Stack<Integer> stack2 = null;
 
         public CQueue() {
-            A = new Stack<>();
-            B = new Stack<>();
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
         }
 
         public void appendTail(int value) {
-            A.push(value);
+            stack1.add(value);
         }
 
         public int deleteHead() {
-            if (!B.isEmpty()) {
-                return B.pop();
+            if (!stack2.isEmpty()) {
+                return stack2.pop();
             }
-            if (A.isEmpty()) {
+            if (stack1.isEmpty()) {
                 return -1;
             }
-            while (!A.isEmpty()) {
-                B.push(A.pop());
+            while (!stack1.isEmpty()) {
+                stack2.add(stack1.pop());
             }
-            return B.pop();
+            return stack2.pop();
         }
     }
 }
-
