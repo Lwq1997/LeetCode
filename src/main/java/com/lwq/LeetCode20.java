@@ -25,32 +25,7 @@ import java.util.Stack;
  */
 public class LeetCode20 {
     public static void main(String[] args) {
-
-    }
-
-    public static boolean isValid(String s) {
-        HashMap<Character, Character> mappings = new HashMap<Character, Character>();
-        mappings.put(')', '(');
-        mappings.put('}', '{');
-        mappings.put(']', '[');
-
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (stack.size() > s.length() / 2) {
-                //不可能出现栈的大小超过字符串长度的一半，就算接下来全是右括号，也只能等于一半
-                return false;
-            }
-            char c = s.charAt(i);
-            if (mappings.containsKey(c)) {
-                char topElement = stack.empty() ? '#' : stack.pop();
-                if (topElement != mappings.get(c)) {
-                    return false;
-                }
-            } else {
-                stack.push(c);
-            }
-        }
-        return stack.isEmpty();
+        System.out.println(isValid("()[]{}"));
     }
 
     public boolean isValid2(String s) {
@@ -59,5 +34,32 @@ public class LeetCode20 {
         } else {
             return "".equals(s);
         }
+    }
+
+    public static boolean isValid(String s) {
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put(')','(');
+        map.put(']','[');
+        map.put('}','{');
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(map.containsKey(c)){
+                //说明是右括号
+                if(stack.isEmpty()){
+                    //如果这时候栈是空，则肯定不合法
+                    return false;
+                }else {
+                    Character pop = stack.pop();
+                    if(!map.get(c).equals(pop)){
+                        return false;
+                    }
+                }
+            }else{
+                //说明是左括号
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
     }
 }
