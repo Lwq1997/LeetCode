@@ -1,4 +1,4 @@
-package com.lwq.primary_algorithm;
+package com.lwq;
 
 import com.lwq.TreeNode;
 

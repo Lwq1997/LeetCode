@@ -1,5 +1,7 @@
 package com.lwq.primary_algorithm.list;
 
+import com.lwq.ListNode;
+
 /*
 删除链表中等于给定值 val 的所有节点。
 

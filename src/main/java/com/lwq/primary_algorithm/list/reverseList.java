@@ -1,6 +1,8 @@
 package com.lwq.primary_algorithm.list;
 
 
+import com.lwq.ListNode;
+
 /*
 
 反转一个单链表。

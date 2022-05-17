@@ -1,6 +1,8 @@
 package com.lwq.primary_algorithm.list;
 
 
+import com.lwq.ListNode;
+
 import java.util.LinkedHashMap;
 import java.util.Stack;
 
