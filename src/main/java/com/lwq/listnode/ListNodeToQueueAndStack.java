@@ -10,6 +10,7 @@ public class ListNodeToQueueAndStack {
 
         public Node(V val) {
             this.val = val;
+            next = null;
         }
     }
 
