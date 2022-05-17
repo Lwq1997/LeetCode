@@ -1,7 +1,7 @@
 package com.lwq.sort;
 
 /**
- * 选择排序
+ * 冒泡排序
  */
 public class BubbleSort {
     public static void main(String[] args) {
