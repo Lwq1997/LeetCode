@@ -4,15 +4,18 @@ public class BinarySearch {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 12, 12, 11};
         int[] arr1 = {3,2,3,2,3};
+        int[] arr2 = {1,2,3,1};
         int target = 12;
         int index = binarySearch(arr, target);
         int indexleft = mostLeftLessNumIndex(arr, target);
         int indexright = mostrightLessNumIndex(arr, target);
         int indexmin = oneMinIndex(arr1);
+        int indexmax = oneMaxIndex(arr2);
         System.out.println(index);
         System.out.println(indexleft);
         System.out.println(indexright);
         System.out.println(indexmin);
+        System.out.println(indexmax);
     }
 
     /**
@@ -70,6 +73,46 @@ public class BinarySearch {
             }
         }
         return arr[left] < arr[right] ? left : right;
+    }
+
+    public static int oneMaxIndex(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        int length = arr.length;
+        if (length == 1) {
+            return 0;
+        }
+        if (arr[0] > arr[1]) {
+            return 0;
+        }
+        if (arr[length - 2] < arr[length - 1]) {
+            return length - 1;
+        }
+        int left = 0;
+        int right = length - 1;
+        int index = -1;
+        //这里有一种边界情况，就是mid-1或者mid+1不在L到R中，此时L和R只有两个数
+        while (left < right - 1) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {
+                return mid;
+            } else {
+                // 左边 > 我 > 右边,递减
+                // 左边 > 我 < 右边,我最小
+                // 左边 < 我 < 右边,递增
+                if (arr[mid] > arr[mid - 1]) {
+//                    对应上面的情况3，此时直接去右边搜索，肯定有一个区间最大值
+                    left = mid + 1;
+                    continue;
+                }
+                if (arr[mid] < arr[mid + 1]) {
+                    right = mid - 1;
+                    continue;
+                }
+            }
+        }
+        return arr[left] > arr[right] ? left : right;
     }
 
     /**
