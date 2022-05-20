@@ -30,12 +30,12 @@ public class QuickSort {
         int more = right;
         int index = left;
         while (index < more) {
-            //每一次循环就是看left这个数的值和more这个数的值的大小关系
+            //每一次循环就是看index这个数的值和more这个数的值的大小关系
             if (nums[index] < nums[right]) {
-                //此时把小于标记位的区间右移，left往后移动一位
+                //此时把小于区间的标记位less的区间右移，index往后移动一位
                 swap(nums, ++less, index++);
             } else if (nums[index] > nums[right]) {
-                //此时把标记位的前一个数字和left交换
+                //此时把大于标记位more的前一个数字和index交换
                 swap(nums, --more, index);
             } else {
                 index++;
