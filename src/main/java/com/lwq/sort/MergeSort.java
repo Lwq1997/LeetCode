@@ -1,14 +1,19 @@
 package com.lwq.sort;
 
 
+import javafx.scene.control.Alert;
+
 /**
  * 归并排序
  */
 public class MergeSort {
     public static void main(String[] args) {
         sort(new int[]{1, 4, 6, 2, 6, 2, 6, 7, 1, 4, 7, 8, 3, 7, 8, 3});
+        //断言
+        System.out.println("+====");
+        System.out.println(smallSum(new int[]{1, 4, 6, 2, 6}));
+        assert smallSum(new int[]{1, 4, 6, 2, 6}) == 14;
     }
-
 
     private static int smallSum(int[] arr) {
         if (arr == null || arr.length == 0) {
