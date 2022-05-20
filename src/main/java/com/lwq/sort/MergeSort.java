@@ -12,7 +12,6 @@ public class MergeSort {
         //断言
         System.out.println("+====");
         System.out.println(smallSum(new int[]{1, 4, 6, 2, 6}));
-        assert smallSum(new int[]{1, 4, 6, 2, 6}) == 14;
     }
 
     private static int smallSum(int[] arr) {
