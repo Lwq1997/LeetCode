@@ -1,5 +1,7 @@
 package com.lwq;
 
+import java.util.HashMap;
+
 /**
  * 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。
  * <p>
@@ -12,6 +14,54 @@ package com.lwq;
  */
 public class LeetCode138 {
 
+    public static void main(String[] args) {
+        //测试用例
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
+        Node node6 = new Node(6);
+        Node node7 = new Node(7);
+        Node node8 = new Node(8);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node1.random = node4;
+        node2.random = node8;
+        node3.random = node5;
+        node4.random = node1;
+        node5.random = node3;
+        Node node = new LeetCode138().copyRandomList01(node1);
+        while (node != null) {
+            if (node.random != null) {
+                System.out.println("random:" + node.random.val);
+            }
+            System.out.println("next:" + node.val);
+            System.out.println("==========================");
+            node = node.next;
+        }
+    }
+
+    public Node copyRandomList01(Node head) {
+        HashMap<Node, Node> map = new HashMap<>();
+        Node cur = head;
+        while (cur != null) {
+            map.put(cur, new Node(cur.val));
+            cur = cur.next;
+        }
+        cur = head;
+        while (cur != null) {
+            map.get(cur).next = map.get(cur.next);
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return map.get(head);
+    }
 
     public Node copyRandomList(Node head) {
         if (head == null) {
@@ -54,7 +104,7 @@ public class LeetCode138 {
         return cloneHead;
     }
 
-    class Node {
+    static class Node {
         int val;
         Node next;
         Node random;
