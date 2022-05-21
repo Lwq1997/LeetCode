@@ -52,7 +52,7 @@ public class LeetCode160 {
     public static void main(String[] args) {
         //测试用例
 
-        new LeetCode160().getIntersectionNode(null,null);
+        new LeetCode160().getIntersectionNode(null, null);
     }
 
     /**
@@ -124,7 +124,17 @@ public class LeetCode160 {
         //找到headA链表的入环节点
         ListNode loopA = detectCycle(headA);
         ListNode loopB = detectCycle(headB);
-        return bothloop(headA, loopA, headB, loopB);
+        if (loopA == null && loopB == null) {
+            //无环链表相交问题
+//            return getIntersectionNode(headA, headB);
+            //无环链表相交问题
+            return getIntersectionNode01(headA, headB);
+        }
+        if (loopA != null && loopB != null) {
+            //有环链表相交问题
+            return bothloop(headA, loopA, headB, loopB);
+        }
+        return null;
     }
 
     private static ListNode bothloop(ListNode headA, ListNode loopA, ListNode headB, ListNode loopB) {
