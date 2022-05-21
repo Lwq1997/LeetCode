@@ -2,7 +2,7 @@ package com.lwq.sort;
 
 
 /**
- * 归并排序
+ * 堆排序
  */
 public class HeapSort {
     public static void main(String[] args) {
