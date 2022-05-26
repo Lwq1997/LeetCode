@@ -40,7 +40,8 @@ public class LeetCode695 {
     }
 
     private int dfs(int i, int j, int[][] grid) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == 0) {
+        // 如果越界了，则返回
+        if (!(0 <= i && i < grid.length && 0 <= j && j < grid[0].length)) {
             return 0;
         }
         grid[i][j] = 0;
