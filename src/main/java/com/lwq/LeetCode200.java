@@ -43,6 +43,12 @@ public class LeetCode200 {
         return count;
     }
 
+    /**
+     * 感染函数，把当前1的位置的上下左右的1都改为2
+     * @param grid
+     * @param row
+     * @param col
+     */
     private void dfs(char[][] grid, int row, int col) {
         // 如果越界了，则返回
         if (!(0 <= row && row < grid.length && 0 <= col && col < grid[0].length)) {
