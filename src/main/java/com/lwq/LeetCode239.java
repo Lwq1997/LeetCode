@@ -33,6 +33,13 @@ public class LeetCode239 {
     }
 
     //时间复杂度的话是 O(nk)。
+
+    /**
+     * 暴力解法
+     * @param nums
+     * @param k
+     * @return
+     */
     public static int[] maxSlidingWindow(int[] nums, int k) {
         int len = nums.length;
         if (len * k == 0) {
@@ -105,6 +112,7 @@ public class LeetCode239 {
      * @return
      */
     public static int[] maxSlidingWindow2(int[] nums, int k) {
+        //整个队列维护一个从大到小的数组。
         ArrayDeque<Integer> deque = new ArrayDeque<>();
 
         int len = nums.length;
