@@ -147,7 +147,7 @@ public class LeetCode28 {
             } else if(next[aimIndex] == -1){ // next[aimIndex] == -1 间接等于aimIndex == 0，说明前面没有最长公共前缀了，没办法加速了，则原始位置后移一位
                 originIndex++;
             }else {
-                // 目标串回推到next数组的位置
+                // 主串索引不动，目标串索引回推到next数组的位置
                 aimIndex = next[aimIndex];
             }
         }
