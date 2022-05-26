@@ -116,7 +116,12 @@ public class LeetCode28 {
         return -1;
     }
 
-    @Test
+    /**
+     * KMP算法
+     * @param origin
+     * @param aim
+     * @return
+     */
     public int strStr2(String origin, String aim) {
         if (origin == null || aim == null || origin.equals(aim) || aim.length() == 0) {
             return 0;
