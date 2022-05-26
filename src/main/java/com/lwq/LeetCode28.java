@@ -136,10 +136,12 @@ public class LeetCode28 {
         int originIndex = 0;
         int aimIndex = 0;
         while (originIndex < originChar.length && aimIndex < aimChar.length) {
-            if (aimIndex == -1 || originChar[originIndex] == aimChar[aimIndex]) {
+            if (originChar[originIndex] == aimChar[aimIndex]) {
                 originIndex++;
                 aimIndex++;
-            } else {
+            } else if(next[aimIndex] == -1){ // next[aimIndex] == -1 间接等于aimIndex == 0，说明前面没有最长公共前缀了，没办法加速了，则原始位置后移一位
+                originIndex++;
+            }else {
                 // 目标串回推到next数组的位置
                 aimIndex = next[aimIndex];
             }
@@ -157,14 +159,16 @@ public class LeetCode28 {
         int[] next = new int[aim.length()];
         next[0] = -1;
         next[1] = 0;
-        int pos = 2;
-        int cn = 0;
+        int pos = 2;//next数组的下标
+        int cn = 0; //代表pos-1位置的最长公共前缀个数
         while (pos < next.length) {
             if (aim.charAt(pos - 1) == aim.charAt(cn)) {
+                // pos-1位置的字符与cn位置的字符相同,cn又是pos-1位置的最长公共前缀个数
                 next[pos++] = ++cn;
             } else if (cn > 0) {
                 cn = next[cn];
             } else {
+                //此时说明pos位置的公共前缀个数为0
                 next[pos++] = 0;
             }
         }
