@@ -44,6 +44,224 @@ public class BinaryTreeIterator {
         System.out.println("\n");
         System.out.println("层序遍历：");
         BinaryTreeIterator.level(root);
+        System.out.println("\n");
+        System.out.println("morris：");
+        BinaryTreeIterator.morris(root);
+        System.out.println("\n");
+        System.out.println("morris先序：");
+        BinaryTreeIterator.morrisPre(root);
+        System.out.println("\n");
+        System.out.println("morris中序：");
+        BinaryTreeIterator.morrisIn(root);
+        System.out.println("\n");
+        System.out.println("morris中序：");
+        BinaryTreeIterator.morrisIn2(root);
+        System.out.println("\n");
+        System.out.println("morris后序：");
+        BinaryTreeIterator.morrisPost(root);
+    }
+
+    /**
+     * morris后续遍历
+     * <p>
+     * 到达节点的第二次的时候：逆序打印自己左树的右边界
+     * 然后逆序打印整个树的右边界
+     *
+     * @param root
+     */
+    private static void morrisPost(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        while (cur != null) {
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    mostRight.right = null;
+                    printEdge(cur.left);
+                }
+            }
+            cur = cur.right;
+        }
+        printEdge(root);
+    }
+
+    //以X为头的树，逆序打印这棵树的右边界
+    public static void printEdge(TreeNode root) {
+        TreeNode tail = reverseEdge(root);
+        TreeNode cur = tail;
+        while (cur != null) {
+            System.out.print(cur.val + " ");
+            cur = cur.right;
+        }
+        reverseEdge(tail);
+    }
+
+    private static TreeNode reverseEdge(TreeNode root) {
+        TreeNode pre = null;
+        TreeNode next = null;
+        while (root != null) {
+            next = root.right;
+            root.right = pre;
+            pre = root;
+            root = next;
+        }
+        return pre;
+    }
+
+    /**
+     * morris中序遍历
+     * <p>
+     * <p>
+     * 只到达一次，则打印
+     * 达到两次，打印第二次
+     *
+     * @param root
+     */
+    private static void morrisIn2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        while (cur != null) {
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    System.out.print(cur.val + " ");
+                    mostRight.right = null;
+                }
+            } else {
+                System.out.print(cur.val + " ");
+            }
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris中序遍历
+     * <p>
+     * <p>
+     * 只到达一次，则打印
+     * 达到两次，打印第二次
+     *
+     * @param root
+     */
+    private static void morrisIn(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        while (cur != null) {
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    mostRight.right = null;
+                }
+            }
+            //走到这里，可能说明cur只会到达一次，因为有左子树才会重复到达
+            //走到这里，可能说明cur到达了两次，但是这里肯定不是第一次，因为第一次在上面，并且continue了
+            System.out.print(cur.val + " ");
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris先序遍历
+     * <p>
+     * 只到达一次，则打印
+     * 达到两次，打印第一次
+     *
+     * @param root
+     */
+    private static void morrisPre(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        while (cur != null) {
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    //走到这里，说明cur会到达两次，这里是第一次
+                    System.out.print(cur.val + " ");
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    mostRight.right = null;
+                }
+            } else {
+                //走到这里，说明cur只会到达一次，因为有左子树才会重复到达
+                System.out.print(cur.val + " ");
+            }
+            cur = cur.right;
+        }
+    }
+
+    /**
+     * morris遍历
+     * cur为头结点
+     * 如果cur没有左孩子，cur向右移动（cur = cur.right）
+     * 如果cur有左孩子，找到cur的左子树的最右节点mostright
+     * 如果mostright的右孩子为空，将mostright的右孩子设置为cur，cur向左移动（cur = cur.left）
+     * 如果mostright的右孩子不为空，mostright的右孩子指向空，cur向右移动（cur = cur.right）
+     * cur为空，遍历停止
+     *
+     * @param root
+     */
+    private static void morris(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        while (cur != null) {
+            System.out.print(cur.val + " ");
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    mostRight.right = null;
+                }
+            }
+            cur = cur.right;
+        }
+
     }
 
     //递归序列
