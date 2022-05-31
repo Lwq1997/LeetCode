@@ -36,7 +36,15 @@ import java.util.Arrays;
  */
 public class LeetCode977 {
     public static void main(String[] args) {
-
+        int[] res = new LeetCode977().sortedSquares01(new int[]{-4, -1, 0, 3, 10});
+        for (int i : res) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        res = new LeetCode977().sortedSquares02(new int[]{-4, -1, 0, 3, 10});
+        for (int i : res) {
+            System.out.print(i + " ");
+        }
     }
 
     /**
