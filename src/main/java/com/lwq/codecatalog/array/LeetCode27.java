@@ -85,20 +85,18 @@ public class LeetCode27 {
      * @return
      */
     public int removeElement02(int[] nums, int val) {
-        if (null == nums || nums.length == 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        int slow = 0;
-        for (int fast = 0; fast < nums.length; fast++) {
-            if (val != nums[fast]) {
-                //如果不相等了，fast和slow交换
-                // 然后 slow++，fast++
-                nums[slow] = nums[fast];
+        int slow = 0, fast = 0;
+        while (fast < nums.length) {
+            if (nums[fast] != val) {
+                if(fast!=slow){
+                    nums[slow] = nums[fast];
+                }
                 slow++;
-            } else {
-                //如果相等，则slow不动，fast++即可
-
             }
+            fast++;
         }
         return slow;
     }
