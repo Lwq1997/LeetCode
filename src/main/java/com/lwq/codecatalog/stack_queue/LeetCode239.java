@@ -41,7 +41,6 @@ public class LeetCode239 {
         }
     }
 
-
     /**
      * 使用一个双端队列
      *
