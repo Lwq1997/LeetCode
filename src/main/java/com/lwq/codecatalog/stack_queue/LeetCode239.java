@@ -35,7 +35,10 @@ import java.util.ArrayDeque;
  */
 public class LeetCode239 {
     public static void main(String[] args) {
-        maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
+        int[] ints = maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
     }
 
     /**
